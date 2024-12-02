@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\WindFarm;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -15,6 +16,8 @@ class DashboardController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return Inertia::render('Dashboard');
+        return Inertia::render('Dashboard', [
+            'windFarms' => WindFarm::all(),
+        ]);
     }
 }

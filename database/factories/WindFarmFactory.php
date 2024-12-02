@@ -18,7 +18,20 @@ class WindFarmFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'location' => $this->faker->word(),
+            'location' => $this->randomLocation(),
         ];
+    }
+
+    private function randomLocation()
+    {
+        $locations = [
+            'Newcastle upon Tyne',
+            'Edinburgh',
+            'Glasgow',
+            'Birmingham',
+            'London'
+        ];
+
+        return $locations[array_rand($locations)];
     }
 }

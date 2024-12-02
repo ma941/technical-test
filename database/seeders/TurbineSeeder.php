@@ -15,6 +15,6 @@ class TurbineSeeder extends Seeder
      */
     public function run()
     {
-        Turbine::factory(50)->create();
+        Turbine::factory(10)->create();
     }
 }

@@ -47,7 +47,7 @@ class WindFarmController extends Controller
      */
     public function show(WindFarm $windFarm)
     {
-        //
+        dd('here');
     }
 
     /**
