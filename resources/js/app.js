@@ -1,6 +1,8 @@
 require('./bootstrap');
 import { createApp, h } from 'vue';
 import { InertiaApp } from '@inertiajs/inertia-vue3';
+import wrapper from './Layouts/Wrapper.vue';
+import '../css/app.css';
 
 const app = createApp({
   render: () =>
@@ -10,4 +12,5 @@ const app = createApp({
     }),
 });
 
+app.component('wrapper', wrapper);
 app.mount('#app');
