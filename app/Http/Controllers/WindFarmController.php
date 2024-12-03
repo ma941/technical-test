@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreWindFarmRequest;
 use App\Http\Requests\UpdateWindFarmRequest;
 use App\Models\WindFarm;
+use Inertia\Inertia;
 
 class WindFarmController extends Controller
 {
@@ -15,7 +16,9 @@ class WindFarmController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('Windfarm/Index', [
+            'windFarms' => WindFarm::all(),
+        ]);
     }
 
     /**
@@ -45,9 +48,11 @@ class WindFarmController extends Controller
      * @param  \App\Models\WindFarm  $windFarm
      * @return \Illuminate\Http\Response
      */
-    public function show(WindFarm $windFarm)
+    public function show(WindFarm $windfarm)
     {
-        dd('here');
+        return Inertia::render('Windfarm/Show', [
+            'windFarm' => $windfarm->load('turbines'),
+        ]);
     }
 
     /**

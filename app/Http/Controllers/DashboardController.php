@@ -17,7 +17,7 @@ class DashboardController extends Controller
     public function __invoke(Request $request)
     {
         return Inertia::render('Dashboard', [
-            'windFarms' => WindFarm::all(),
+            'windFarms' => WindFarm::orderBy('created_at', 'desc')->take(6)->get(),
         ]);
     }
 }

@@ -47,7 +47,7 @@ class TurbineController extends Controller
      */
     public function show(Turbine $turbine)
     {
-        //
+        dd($turbine);
     }
 
     /**
