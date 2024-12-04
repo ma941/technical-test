@@ -14,6 +14,10 @@ const props = defineProps({
         type: Object,
         required: true 
     },
+    unusedRotors: {
+        type: Object,
+        required: true 
+    },
     damageAndWearOptions: {
         type: Object,
         required: true 
@@ -32,16 +36,35 @@ const existingBladeForm = useForm({
     damageAndWear: props.turbine.blades.length === 0 ? 0 : props.turbine.blades[0].damage_and_wear ? props.turbine.blades[0].damage_and_wear?.id : 0
 });
 
+const newRotorForm = useForm({
+    turbine: props.turbine.id,
+    name: '',
+    damageAndWear: 1
+});
+
+const existingRotorForm = useForm({
+    turbine: props.turbine.id,
+    rotor: props.turbine.rotors.length === 0 ? 0 : props.turbine.rotors[0].id,
+    damageAndWear: props.turbine.rotors.length === 0 ? 0 : props.turbine.rotors[0].damage_and_wear ? props.turbine.rotors[0].damage_and_wear?.id : 0
+});
+
 watch(() => existingBladeForm.blade, (newBlade, oldBlade) => {
     existingBladeForm.damageAndWear = props.unusedBlades.filter(blade => blade.id === newBlade)[0].damage_and_wear_id;
 });
 
 const showBladeModal = ref(false);
 const showAddNewBladeContent = ref(false);
+const showRotorModal = ref(false);
+const showAddNewRotorContent = ref(false);
 
 const closeBladeModal = () => {
     showBladeModal.value = false
     showAddNewBladeContent.value = false
+};
+
+const closeRotorModal = () => {
+    showRotorModal.value = false
+    showAddNewRotorContent.value = false
 };
 
 const submitExistingBladeForm = () => {
@@ -49,7 +72,8 @@ const submitExistingBladeForm = () => {
         route('blades.update', { blade: existingBladeForm.blade }),
         {
             onSuccess: () => {
-                showBladeModal.value = false;
+                closeBladeModal();
+                closeRotorModal();
             },
             preserveState: true
         }
@@ -61,13 +85,39 @@ const submitNewBladeForm = () => {
         route('blades.store'),
         {
             onSuccess: () => {
-                showBladeModal.value = false;
+                closeBladeModal();
+                closeRotorModal();
             },
             preserveState: true
         }
     );
 };
 
+const submitExistingRotorForm = () => {
+    existingRotorForm.put(
+        route('rotors.update', { rotor: existingRotorForm.rotor }),
+        {
+            onSuccess: () => {
+                closeBladeModal();
+                closeRotorModal();
+            },
+            preserveState: true
+        }
+    );
+};
+
+const submitNewRotorForm = () => {
+    newRotorForm.post(
+        route('rotors.store'),
+        {
+            onSuccess: () => {
+                closeBladeModal();
+                closeRotorModal();
+            },
+            preserveState: true
+        }
+    );
+};
 
 </script>
 
@@ -111,6 +161,44 @@ const submitNewBladeForm = () => {
             </div>
         </modal>
 
+        <modal v-if="showRotorModal" @close="closeRotorModal()">
+            <heading class="mb-2" :title="'Rotor for: ' + props.turbine.name" />
+            <div v-if="showAddNewRotorContent">
+                <form @submit.prevent="submitNewRotorForm">
+                    <div class="grid grid-cols-2 gap-2">
+                        <p>Name:</p>
+                        <input type="text" v-model="newRotorForm.name" class="border border-solid rounded px-2" placeholder="Enter rotor name">
+                        <p>Damage and wear:</p>
+                        <select v-model="newRotorForm.damageAndWear" id="damageAndWear" class="border border-solid rounded px-2">
+                            <option v-for="rating in props.damageAndWearOptions" :value="rating.id">{{ rating.level }}</option>
+                        </select>
+                    </div>                    
+                    <primaryButton @click="submitNewRotorForm" text="Add rotor" type="submit" class="mx-auto mt-4" />
+                </form>
+                <p class="mt-12 text-center"><span @click="showAddNewRotorContent = false" class="cursor-pointer text-indigo-600">Click Here</span> to use existing rotor</p>
+            </div>
+            <div v-else>
+                <div v-if="props.unusedRotors.length !== 0">
+                    <form @submit.prevent="submitExistingRotorForm">
+                        <div class="grid grid-cols-2 gap-2">
+                            <p>Select rotor:</p>
+                            <select v-model="existingRotorForm.rotor" id="rotor" class="border border-solid rounded px-2">
+                                <option disabled :value="0">Select a rotor</option>
+                                <option v-for="rotor in props.unusedRotors" :value="rotor.id">{{ rotor.name }}</option>
+                            </select>
+                            <p>Damage and wear:</p>
+                            <select v-model="existingRotorForm.damageAndWear" id="damageAndWear" class="border border-solid rounded px-2">
+                                <option disabled :value="0">Select rating</option>
+                                <option v-for="rating in props.damageAndWearOptions" :value="rating.id">{{ rating.level }}</option>
+                            </select>
+                        </div>                    
+                        <primaryButton v-if="existingRotorForm.rotor !== 0" @click="submitExistingRotorForm" text="Update rotor" type="submit" class="mx-auto mt-4" />
+                    </form>
+                </div>
+                <p class="mt-12">If you can't find the rotor you are looking for <span @click="showAddNewRotorContent = true" class="cursor-pointer text-indigo-600">Click Here</span> to add a new rotor</p>
+            </div>
+        </modal>
+
         <heading :title="props.turbine.name" />
         <div class="flex justify-between m-auto w-fit mt-2">
             <location class="h-5 w-5 mr-2" /><span>{{ props.turbine.wind_farm.name + ' - ' + props.turbine.wind_farm.location }}</span>
@@ -127,10 +215,15 @@ const submitNewBladeForm = () => {
                 </div>
             </div>
 
-            <div class="border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none">
+            <div @click="showRotorModal = true" class="border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none">
                 <h3 class="text-center font-bold">Rotor</h3>
-                <p>Name: N/A</p>
-                <p>Damage and wear: N/A</p>
+                <div v-if="props.turbine.rotors.length === 0" class="text-red-600 font-bold">
+                    <p>No Rotor</p>
+                </div>
+                <div v-else>
+                    <p>Name: {{ props.turbine.rotors[0].name }}</p>
+                    <p>Damage and wear: {{ props.turbine.rotors[0].damage_and_wear?.level }}</p>
+                </div>
             </div>
 
             <div class="border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none">

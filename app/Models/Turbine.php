@@ -50,4 +50,9 @@ class Turbine extends Model
     {
         return $this->hasMany(Blade::class);
     }
+
+    public function rotors(): HasMany
+    {
+        return $this->hasMany(Rotor::class);
+    }
 }

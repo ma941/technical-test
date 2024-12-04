@@ -5,9 +5,8 @@
             <Link :href="route('dashboard')">Home</Link>
             <Link :href="route('windfarms.index')">Windfarms</Link>
             <Link :href="route('turbines.index')">Turbines</Link>
-
             <Link :href="route('blades.index')">All Blades</Link>
-            <Link :href="route('blades.index')">All Rotors</Link>
+            <Link :href="route('rotors.index')">All Rotors</Link>
             <Link :href="route('blades.index')">All Hubs</Link>
             <Link :href="route('blades.index')">All Generators</Link>
         </div>

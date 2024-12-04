@@ -22393,6 +22393,105 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Rotor/Index.vue?vue&type=script&setup=true&lang=js":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Rotor/Index.vue?vue&type=script&setup=true&lang=js ***!
+  \***********************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/vue3 */ "./node_modules/@inertiajs/vue3/dist/index.esm.js");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  __name: 'Index',
+  props: {
+    rotors: {
+      type: Object,
+      required: true
+    }
+  },
+  setup: function setup(__props, _ref) {
+    var __expose = _ref.expose;
+    __expose();
+    var props = __props;
+    var navigateToRotors = function navigateToRotors(id) {
+      _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__.router.get(route('rotors.show', {
+        rotor: id
+      }));
+    };
+    var __returned__ = {
+      props: props,
+      navigateToRotors: navigateToRotors,
+      get router() {
+        return _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__.router;
+      }
+    };
+    Object.defineProperty(__returned__, '__isScriptSetup', {
+      enumerable: false,
+      value: true
+    });
+    return __returned__;
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Rotor/Show.vue?vue&type=script&setup=true&lang=js":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Rotor/Show.vue?vue&type=script&setup=true&lang=js ***!
+  \**********************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/vue3 */ "./node_modules/@inertiajs/vue3/dist/index.esm.js");
+/* harmony import */ var _Components_Icons_TrashCan_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Components/Icons/TrashCan.vue */ "./resources/js/Components/Icons/TrashCan.vue");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  __name: 'Show',
+  props: {
+    rotor: {
+      type: Object,
+      required: true
+    }
+  },
+  setup: function setup(__props, _ref) {
+    var __expose = _ref.expose;
+    __expose();
+    var props = __props;
+    var destroy = function destroy() {
+      if (confirm('Are you sure you want to delete this rotor?')) {
+        _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__.router["delete"](route('rotors.destroy', {
+          rotor: props.rotor.id
+        }));
+      }
+    };
+    var __returned__ = {
+      props: props,
+      destroy: destroy,
+      get router() {
+        return _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__.router;
+      },
+      trashCan: _Components_Icons_TrashCan_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    };
+    Object.defineProperty(__returned__, '__isScriptSetup', {
+      enumerable: false,
+      value: true
+    });
+    return __returned__;
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Turbine/Index.vue?vue&type=script&setup=true&lang=js":
 /*!*************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Turbine/Index.vue?vue&type=script&setup=true&lang=js ***!
@@ -22472,13 +22571,17 @@ __webpack_require__.r(__webpack_exports__);
       type: Object,
       required: true
     },
+    unusedRotors: {
+      type: Object,
+      required: true
+    },
     damageAndWearOptions: {
       type: Object,
       required: true
     }
   },
   setup: function setup(__props, _ref) {
-    var _props$turbine$blades;
+    var _props$turbine$blades, _props$turbine$rotors;
     var __expose = _ref.expose;
     __expose();
     var props = __props;
@@ -22492,6 +22595,16 @@ __webpack_require__.r(__webpack_exports__);
       blade: props.turbine.blades.length === 0 ? 0 : props.turbine.blades[0].id,
       damageAndWear: props.turbine.blades.length === 0 ? 0 : props.turbine.blades[0].damage_and_wear ? (_props$turbine$blades = props.turbine.blades[0].damage_and_wear) === null || _props$turbine$blades === void 0 ? void 0 : _props$turbine$blades.id : 0
     });
+    var newRotorForm = (0,_inertiajs_vue3__WEBPACK_IMPORTED_MODULE_2__.useForm)({
+      turbine: props.turbine.id,
+      name: '',
+      damageAndWear: 1
+    });
+    var existingRotorForm = (0,_inertiajs_vue3__WEBPACK_IMPORTED_MODULE_2__.useForm)({
+      turbine: props.turbine.id,
+      rotor: props.turbine.rotors.length === 0 ? 0 : props.turbine.rotors[0].id,
+      damageAndWear: props.turbine.rotors.length === 0 ? 0 : props.turbine.rotors[0].damage_and_wear ? (_props$turbine$rotors = props.turbine.rotors[0].damage_and_wear) === null || _props$turbine$rotors === void 0 ? void 0 : _props$turbine$rotors.id : 0
+    });
     (0,vue__WEBPACK_IMPORTED_MODULE_1__.watch)(function () {
       return existingBladeForm.blade;
     }, function (newBlade, oldBlade) {
@@ -22501,16 +22614,23 @@ __webpack_require__.r(__webpack_exports__);
     });
     var showBladeModal = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
     var showAddNewBladeContent = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
+    var showRotorModal = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
+    var showAddNewRotorContent = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
     var closeBladeModal = function closeBladeModal() {
       showBladeModal.value = false;
       showAddNewBladeContent.value = false;
+    };
+    var closeRotorModal = function closeRotorModal() {
+      showRotorModal.value = false;
+      showAddNewRotorContent.value = false;
     };
     var submitExistingBladeForm = function submitExistingBladeForm() {
       existingBladeForm.put(route('blades.update', {
         blade: existingBladeForm.blade
       }), {
         onSuccess: function onSuccess() {
-          showBladeModal.value = false;
+          closeBladeModal();
+          closeRotorModal();
         },
         preserveState: true
       });
@@ -22518,7 +22638,28 @@ __webpack_require__.r(__webpack_exports__);
     var submitNewBladeForm = function submitNewBladeForm() {
       newBladeForm.post(route('blades.store'), {
         onSuccess: function onSuccess() {
-          showBladeModal.value = false;
+          closeBladeModal();
+          closeRotorModal();
+        },
+        preserveState: true
+      });
+    };
+    var submitExistingRotorForm = function submitExistingRotorForm() {
+      existingRotorForm.put(route('rotors.update', {
+        rotor: existingRotorForm.rotor
+      }), {
+        onSuccess: function onSuccess() {
+          closeBladeModal();
+          closeRotorModal();
+        },
+        preserveState: true
+      });
+    };
+    var submitNewRotorForm = function submitNewRotorForm() {
+      newRotorForm.post(route('rotors.store'), {
+        onSuccess: function onSuccess() {
+          closeBladeModal();
+          closeRotorModal();
         },
         preserveState: true
       });
@@ -22527,11 +22668,18 @@ __webpack_require__.r(__webpack_exports__);
       props: props,
       newBladeForm: newBladeForm,
       existingBladeForm: existingBladeForm,
+      newRotorForm: newRotorForm,
+      existingRotorForm: existingRotorForm,
       showBladeModal: showBladeModal,
       showAddNewBladeContent: showAddNewBladeContent,
+      showRotorModal: showRotorModal,
+      showAddNewRotorContent: showAddNewRotorContent,
       closeBladeModal: closeBladeModal,
+      closeRotorModal: closeRotorModal,
       submitExistingBladeForm: submitExistingBladeForm,
       submitNewBladeForm: submitNewBladeForm,
+      submitExistingRotorForm: submitExistingRotorForm,
+      submitNewRotorForm: submitNewRotorForm,
       location: _Components_Icons_Location_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
       ref: vue__WEBPACK_IMPORTED_MODULE_1__.ref,
       watch: vue__WEBPACK_IMPORTED_MODULE_1__.watch,
@@ -22900,7 +23048,7 @@ function render(_ctx, _cache) {
     }),
     _: 1 /* STABLE */
   }, 8 /* PROPS */, ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
-    href: _ctx.route('blades.index')
+    href: _ctx.route('rotors.index')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return _cache[5] || (_cache[5] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("All Rotors")]);
@@ -23067,6 +23215,100 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Rotor/Index.vue?vue&type=template&id=156e2ac4":
+/*!****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Rotor/Index.vue?vue&type=template&id=156e2ac4 ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "grid grid-cols-3 gap-2 mt-2"
+};
+var _hoisted_2 = ["onClick"];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_heading = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("heading");
+  var _component_wrapper = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("wrapper");
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_wrapper, null, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_heading, {
+        title: "Rotors"
+      }), _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+        "class": "text-center mb-4 text-red-600"
+      }, "Note: Rotors associated with turbines can be accessed from the individual turbine pages. You can also add new rotors from the individual turbine pages.", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.props.rotors, function (rotor) {
+        var _rotor$damage_and_wea;
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+          onClick: function onClick($event) {
+            return $setup.navigateToRotors(rotor.id);
+          },
+          "class": "border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none"
+        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Name: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(rotor.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_cache[0] || (_cache[0] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Turbine: ")), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+          "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(rotor.turbine ? 'text-black' : 'text-red-600')
+        }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(rotor.turbine ? rotor.turbine.name : 'N/A'), 3 /* TEXT, CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Location: ")), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+          "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(rotor.turbine ? 'text-black' : 'text-red-600')
+        }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(rotor.turbine ? rotor.turbine.wind_farm.location : 'N/A'), 3 /* TEXT, CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Damage and wear: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_rotor$damage_and_wea = rotor.damage_and_wear) === null || _rotor$damage_and_wea === void 0 ? void 0 : _rotor$damage_and_wea.level), 1 /* TEXT */)], 8 /* PROPS */, _hoisted_2);
+      }), 256 /* UNKEYED_FRAGMENT */))])];
+    }),
+    _: 1 /* STABLE */
+  });
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Rotor/Show.vue?vue&type=template&id=300c4b7b":
+/*!***************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Rotor/Show.vue?vue&type=template&id=300c4b7b ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "border border-slate-500 pl-12 rounded-md shadow flex justify-between"
+};
+var _hoisted_2 = {
+  "class": "py-4"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_heading = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("heading");
+  var _component_wrapper = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("wrapper");
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_wrapper, null, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      var _$setup$props$rotor$d;
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_heading, {
+        title: $setup.props.rotor.name
+      }, null, 8 /* PROPS */, ["title"]), _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+        "class": "text-center mb-4 text-red-600"
+      }, "Note: Rotors can be edited from their associated turbines show pages.", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Name: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.props.rotor.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Turbine: ")), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)($setup.props.rotor.turbine ? 'text-black' : 'text-red-600')
+      }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.props.rotor.turbine ? $setup.props.rotor.turbine.name : 'N/A'), 3 /* TEXT, CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Location: ")), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)($setup.props.rotor.turbine ? 'text-black' : 'text-red-600')
+      }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.props.rotor.turbine ? $setup.props.rotor.turbine.wind_farm.location : 'N/A'), 3 /* TEXT, CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Damage and wear: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$setup$props$rotor$d = $setup.props.rotor.damage_and_wear) === null || _$setup$props$rotor$d === void 0 ? void 0 : _$setup$props$rotor$d.level), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+        onClick: _cache[0] || (_cache[0] = function ($event) {
+          return $setup.destroy();
+        }),
+        "class": "bg-red-600 px-4 rounded-r-md flex items-center text-white cursor-pointer hover:bg-slate-500"
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["trashCan"], {
+        "class": "w-5 h-5"
+      })])])];
+    }),
+    _: 1 /* STABLE */
+  });
+}
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Turbine/Index.vue?vue&type=template&id=1ded9499":
 /*!******************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Turbine/Index.vue?vue&type=template&id=1ded9499 ***!
@@ -23144,16 +23386,47 @@ var _hoisted_10 = {
   "class": "mt-12"
 };
 var _hoisted_11 = {
-  "class": "flex justify-between m-auto w-fit mt-2"
+  key: 0
 };
 var _hoisted_12 = {
+  "class": "grid grid-cols-2 gap-2"
+};
+var _hoisted_13 = ["value"];
+var _hoisted_14 = {
+  "class": "mt-12 text-center"
+};
+var _hoisted_15 = {
+  key: 1
+};
+var _hoisted_16 = {
+  key: 0
+};
+var _hoisted_17 = {
+  "class": "grid grid-cols-2 gap-2"
+};
+var _hoisted_18 = ["value"];
+var _hoisted_19 = ["value"];
+var _hoisted_20 = {
+  "class": "mt-12"
+};
+var _hoisted_21 = {
+  "class": "flex justify-between m-auto w-fit mt-2"
+};
+var _hoisted_22 = {
   "class": "grid grid-cols-2 gap-2 mt-4 text-center"
 };
-var _hoisted_13 = {
+var _hoisted_23 = {
   key: 0,
   "class": "text-red-600 font-bold"
 };
-var _hoisted_14 = {
+var _hoisted_24 = {
+  key: 1
+};
+var _hoisted_25 = {
+  key: 0,
+  "class": "text-red-600 font-bold"
+};
+var _hoisted_26 = {
   key: 1
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -23161,7 +23434,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_wrapper = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("wrapper");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_wrapper, null, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      var _$setup$props$turbine;
+      var _$setup$props$turbine, _$setup$props$turbine2;
       return [$setup.showBladeModal ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["modal"], {
         key: 0,
         onClose: _cache[6] || (_cache[6] = function ($event) {
@@ -23174,14 +23447,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             title: 'Blade for: ' + $setup.props.turbine.name
           }, null, 8 /* PROPS */, ["title"]), $setup.showAddNewBladeContent ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
             onSubmit: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($setup.submitNewBladeForm, ["prevent"])
-          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_cache[8] || (_cache[8] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Name:", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_cache[16] || (_cache[16] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Name:", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
             type: "text",
             "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
               return $setup.newBladeForm.name = $event;
             }),
             "class": "border border-solid rounded px-2",
             placeholder: "Enter blade name"
-          }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.newBladeForm.name]]), _cache[9] || (_cache[9] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Damage and wear:", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+          }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.newBladeForm.name]]), _cache[17] || (_cache[17] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Damage and wear:", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
             "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
               return $setup.newBladeForm.damageAndWear = $event;
             }),
@@ -23201,28 +23474,28 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               return $setup.showAddNewBladeContent = false;
             }),
             "class": "cursor-pointer text-indigo-600"
-          }, "Click Here"), _cache[10] || (_cache[10] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" to use existing blade"))])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [$setup.props.unusedBlades.length !== 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+          }, "Click Here"), _cache[18] || (_cache[18] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" to use existing blade"))])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [$setup.props.unusedBlades.length !== 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
             onSubmit: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($setup.submitExistingBladeForm, ["prevent"])
-          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_cache[13] || (_cache[13] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Select blade:", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_cache[21] || (_cache[21] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Select blade:", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
             "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
               return $setup.existingBladeForm.blade = $event;
             }),
             id: "blade",
             "class": "border border-solid rounded px-2"
-          }, [_cache[11] || (_cache[11] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+          }, [_cache[19] || (_cache[19] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
             disabled: "",
             value: 0
           }, "Select a blade", -1 /* HOISTED */)), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.props.unusedBlades, function (blade) {
             return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
               value: blade.id
             }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(blade.name), 9 /* TEXT, PROPS */, _hoisted_8);
-          }), 256 /* UNKEYED_FRAGMENT */))], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.existingBladeForm.blade]]), _cache[14] || (_cache[14] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Damage and wear:", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+          }), 256 /* UNKEYED_FRAGMENT */))], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.existingBladeForm.blade]]), _cache[22] || (_cache[22] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Damage and wear:", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
             "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
               return $setup.existingBladeForm.damageAndWear = $event;
             }),
             id: "damageAndWear",
             "class": "border border-solid rounded px-2"
-          }, [_cache[12] || (_cache[12] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+          }, [_cache[20] || (_cache[20] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
             disabled: "",
             value: 0
           }, "Select rating", -1 /* HOISTED */)), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.props.damageAndWearOptions, function (rating) {
@@ -23235,34 +23508,118 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             text: "Update blade",
             type: "submit",
             "class": "mx-auto mt-4"
-          })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 32 /* NEED_HYDRATION */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_10, [_cache[15] || (_cache[15] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("If you can't find the blade you are looking for ")), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+          })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 32 /* NEED_HYDRATION */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_10, [_cache[23] || (_cache[23] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("If you can't find the blade you are looking for ")), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
             onClick: _cache[5] || (_cache[5] = function ($event) {
               return $setup.showAddNewBladeContent = true;
             }),
             "class": "cursor-pointer text-indigo-600"
-          }, "Click Here"), _cache[16] || (_cache[16] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" to add a new blade"))])]))];
+          }, "Click Here"), _cache[24] || (_cache[24] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" to add a new blade"))])]))];
+        }),
+        _: 1 /* STABLE */
+      })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.showRotorModal ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["modal"], {
+        key: 1,
+        onClose: _cache[13] || (_cache[13] = function ($event) {
+          return $setup.closeRotorModal();
+        })
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_heading, {
+            "class": "mb-2",
+            title: 'Rotor for: ' + $setup.props.turbine.name
+          }, null, 8 /* PROPS */, ["title"]), $setup.showAddNewRotorContent ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+            onSubmit: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($setup.submitNewRotorForm, ["prevent"])
+          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_cache[25] || (_cache[25] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Name:", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+            type: "text",
+            "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
+              return $setup.newRotorForm.name = $event;
+            }),
+            "class": "border border-solid rounded px-2",
+            placeholder: "Enter rotor name"
+          }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.newRotorForm.name]]), _cache[26] || (_cache[26] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Damage and wear:", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+            "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
+              return $setup.newRotorForm.damageAndWear = $event;
+            }),
+            id: "damageAndWear",
+            "class": "border border-solid rounded px-2"
+          }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.props.damageAndWearOptions, function (rating) {
+            return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
+              value: rating.id
+            }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(rating.level), 9 /* TEXT, PROPS */, _hoisted_13);
+          }), 256 /* UNKEYED_FRAGMENT */))], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.newRotorForm.damageAndWear]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["primaryButton"], {
+            onClick: $setup.submitNewRotorForm,
+            text: "Add rotor",
+            type: "submit",
+            "class": "mx-auto mt-4"
+          })], 32 /* NEED_HYDRATION */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+            onClick: _cache[9] || (_cache[9] = function ($event) {
+              return $setup.showAddNewRotorContent = false;
+            }),
+            "class": "cursor-pointer text-indigo-600"
+          }, "Click Here"), _cache[27] || (_cache[27] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" to use existing rotor"))])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_15, [$setup.props.unusedRotors.length !== 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+            onSubmit: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($setup.submitExistingRotorForm, ["prevent"])
+          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [_cache[30] || (_cache[30] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Select rotor:", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+            "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
+              return $setup.existingRotorForm.rotor = $event;
+            }),
+            id: "rotor",
+            "class": "border border-solid rounded px-2"
+          }, [_cache[28] || (_cache[28] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+            disabled: "",
+            value: 0
+          }, "Select a rotor", -1 /* HOISTED */)), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.props.unusedRotors, function (rotor) {
+            return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
+              value: rotor.id
+            }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(rotor.name), 9 /* TEXT, PROPS */, _hoisted_18);
+          }), 256 /* UNKEYED_FRAGMENT */))], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.existingRotorForm.rotor]]), _cache[31] || (_cache[31] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Damage and wear:", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+            "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
+              return $setup.existingRotorForm.damageAndWear = $event;
+            }),
+            id: "damageAndWear",
+            "class": "border border-solid rounded px-2"
+          }, [_cache[29] || (_cache[29] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+            disabled: "",
+            value: 0
+          }, "Select rating", -1 /* HOISTED */)), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.props.damageAndWearOptions, function (rating) {
+            return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
+              value: rating.id
+            }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(rating.level), 9 /* TEXT, PROPS */, _hoisted_19);
+          }), 256 /* UNKEYED_FRAGMENT */))], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.existingRotorForm.damageAndWear]])]), $setup.existingRotorForm.rotor !== 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["primaryButton"], {
+            key: 0,
+            onClick: $setup.submitExistingRotorForm,
+            text: "Update rotor",
+            type: "submit",
+            "class": "mx-auto mt-4"
+          })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 32 /* NEED_HYDRATION */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_20, [_cache[32] || (_cache[32] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("If you can't find the rotor you are looking for ")), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+            onClick: _cache[12] || (_cache[12] = function ($event) {
+              return $setup.showAddNewRotorContent = true;
+            }),
+            "class": "cursor-pointer text-indigo-600"
+          }, "Click Here"), _cache[33] || (_cache[33] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" to add a new rotor"))])]))];
         }),
         _: 1 /* STABLE */
       })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_heading, {
         title: $setup.props.turbine.name
-      }, null, 8 /* PROPS */, ["title"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["location"], {
+      }, null, 8 /* PROPS */, ["title"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["location"], {
         "class": "h-5 w-5 mr-2"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.props.turbine.wind_farm.name + ' - ' + $setup.props.turbine.wind_farm.location), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-        onClick: _cache[7] || (_cache[7] = function ($event) {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.props.turbine.wind_farm.name + ' - ' + $setup.props.turbine.wind_farm.location), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+        onClick: _cache[14] || (_cache[14] = function ($event) {
           return $setup.showBladeModal = true;
         }),
         "class": "border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none"
-      }, [_cache[18] || (_cache[18] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
+      }, [_cache[35] || (_cache[35] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
         "class": "text-center font-bold"
-      }, "Blade", -1 /* HOISTED */)), $setup.props.turbine.blades.length === 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_13, _cache[17] || (_cache[17] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "No blade", -1 /* HOISTED */)]))) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Name: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.props.turbine.blades[0].name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Damage and wear: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$setup$props$turbine = $setup.props.turbine.blades[0].damage_and_wear) === null || _$setup$props$turbine === void 0 ? void 0 : _$setup$props$turbine.level), 1 /* TEXT */)]))]), _cache[19] || (_cache[19] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+      }, "Blade", -1 /* HOISTED */)), $setup.props.turbine.blades.length === 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_23, _cache[34] || (_cache[34] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "No blade", -1 /* HOISTED */)]))) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Name: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.props.turbine.blades[0].name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Damage and wear: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$setup$props$turbine = $setup.props.turbine.blades[0].damage_and_wear) === null || _$setup$props$turbine === void 0 ? void 0 : _$setup$props$turbine.level), 1 /* TEXT */)]))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+        onClick: _cache[15] || (_cache[15] = function ($event) {
+          return $setup.showRotorModal = true;
+        }),
+        "class": "border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none"
+      }, [_cache[37] || (_cache[37] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
+        "class": "text-center font-bold"
+      }, "Rotor", -1 /* HOISTED */)), $setup.props.turbine.rotors.length === 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_25, _cache[36] || (_cache[36] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "No Rotor", -1 /* HOISTED */)]))) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Name: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.props.turbine.rotors[0].name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Damage and wear: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$setup$props$turbine2 = $setup.props.turbine.rotors[0].damage_and_wear) === null || _$setup$props$turbine2 === void 0 ? void 0 : _$setup$props$turbine2.level), 1 /* TEXT */)]))]), _cache[38] || (_cache[38] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
         "class": "border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none"
       }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
         "class": "text-center font-bold"
-      }, "Rotor"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Name: N/A"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Damage and wear: N/A")], -1 /* HOISTED */)), _cache[20] || (_cache[20] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-        "class": "border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none"
-      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
-        "class": "text-center font-bold"
-      }, "Hub"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Name: N/A"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Damage and wear: N/A")], -1 /* HOISTED */)), _cache[21] || (_cache[21] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+      }, "Hub"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Name: N/A"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Damage and wear: N/A")], -1 /* HOISTED */)), _cache[39] || (_cache[39] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
         "class": "border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none"
       }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
         "class": "text-center font-bold"
@@ -50207,6 +50564,62 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Rotor/Index.vue":
+/*!********************************************!*\
+  !*** ./resources/js/Pages/Rotor/Index.vue ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Index_vue_vue_type_template_id_156e2ac4__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Index.vue?vue&type=template&id=156e2ac4 */ "./resources/js/Pages/Rotor/Index.vue?vue&type=template&id=156e2ac4");
+/* harmony import */ var _Index_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Index.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Pages/Rotor/Index.vue?vue&type=script&setup=true&lang=js");
+/* harmony import */ var _node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Index_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Index_vue_vue_type_template_id_156e2ac4__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Rotor/Index.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Rotor/Show.vue":
+/*!*******************************************!*\
+  !*** ./resources/js/Pages/Rotor/Show.vue ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Show_vue_vue_type_template_id_300c4b7b__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Show.vue?vue&type=template&id=300c4b7b */ "./resources/js/Pages/Rotor/Show.vue?vue&type=template&id=300c4b7b");
+/* harmony import */ var _Show_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Show.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Pages/Rotor/Show.vue?vue&type=script&setup=true&lang=js");
+/* harmony import */ var _node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Show_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Show_vue_vue_type_template_id_300c4b7b__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Rotor/Show.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Turbine/Index.vue":
 /*!**********************************************!*\
   !*** ./resources/js/Pages/Turbine/Index.vue ***!
@@ -50427,6 +50840,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Dashboard_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Dashboard_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Dashboard.vue?vue&type=script&setup=true&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Dashboard.vue?vue&type=script&setup=true&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Rotor/Index.vue?vue&type=script&setup=true&lang=js":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/Pages/Rotor/Index.vue?vue&type=script&setup=true&lang=js ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Index_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Index_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Index.vue?vue&type=script&setup=true&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Rotor/Index.vue?vue&type=script&setup=true&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Rotor/Show.vue?vue&type=script&setup=true&lang=js":
+/*!******************************************************************************!*\
+  !*** ./resources/js/Pages/Rotor/Show.vue?vue&type=script&setup=true&lang=js ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Show_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Show_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Show.vue?vue&type=script&setup=true&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Rotor/Show.vue?vue&type=script&setup=true&lang=js");
  
 
 /***/ }),
@@ -50667,6 +51112,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Dashboard_vue_vue_type_template_id_097ba13b__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Dashboard_vue_vue_type_template_id_097ba13b__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Dashboard.vue?vue&type=template&id=097ba13b */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Dashboard.vue?vue&type=template&id=097ba13b");
+
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Rotor/Index.vue?vue&type=template&id=156e2ac4":
+/*!**************************************************************************!*\
+  !*** ./resources/js/Pages/Rotor/Index.vue?vue&type=template&id=156e2ac4 ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Index_vue_vue_type_template_id_156e2ac4__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Index_vue_vue_type_template_id_156e2ac4__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Index.vue?vue&type=template&id=156e2ac4 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Rotor/Index.vue?vue&type=template&id=156e2ac4");
+
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Rotor/Show.vue?vue&type=template&id=300c4b7b":
+/*!*************************************************************************!*\
+  !*** ./resources/js/Pages/Rotor/Show.vue?vue&type=template&id=300c4b7b ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Show_vue_vue_type_template_id_300c4b7b__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Show_vue_vue_type_template_id_300c4b7b__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Show.vue?vue&type=template&id=300c4b7b */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Rotor/Show.vue?vue&type=template&id=300c4b7b");
 
 
 /***/ }),
@@ -51888,6 +52365,8 @@ var map = {
 	"./Blade/Index.vue": "./resources/js/Pages/Blade/Index.vue",
 	"./Blade/Show.vue": "./resources/js/Pages/Blade/Show.vue",
 	"./Dashboard.vue": "./resources/js/Pages/Dashboard.vue",
+	"./Rotor/Index.vue": "./resources/js/Pages/Rotor/Index.vue",
+	"./Rotor/Show.vue": "./resources/js/Pages/Rotor/Show.vue",
 	"./Turbine/Index.vue": "./resources/js/Pages/Turbine/Index.vue",
 	"./Turbine/Show.vue": "./resources/js/Pages/Turbine/Show.vue",
 	"./Windfarm/Index.vue": "./resources/js/Pages/Windfarm/Index.vue",
