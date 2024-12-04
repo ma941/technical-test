@@ -14,4 +14,14 @@ class DamageAndWear extends Model
     {
         return $this->hasMany(Blade::class);
     }
+
+    public function rotors(): HasMany
+    {
+        return $this->hasMany(Rotor::class);
+    }
+
+    public function hubs(): HasMany
+    {
+        return $this->hasMany(Hub::class);
+    }
 }

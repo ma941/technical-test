@@ -18,6 +18,10 @@ const props = defineProps({
         type: Object,
         required: true 
     },
+    unusedHubs: {
+        type: Object,
+        required: true 
+    },
     damageAndWearOptions: {
         type: Object,
         required: true 
@@ -48,14 +52,36 @@ const existingRotorForm = useForm({
     damageAndWear: props.turbine.rotors.length === 0 ? 0 : props.turbine.rotors[0].damage_and_wear ? props.turbine.rotors[0].damage_and_wear?.id : 0
 });
 
+const newHubForm = useForm({
+    turbine: props.turbine.id,
+    name: '',
+    damageAndWear: 1
+});
+
+const existingHubForm = useForm({
+    turbine: props.turbine.id,
+    hub: props.turbine.hubs.length === 0 ? 0 : props.turbine.hubs[0].id,
+    damageAndWear: props.turbine.hubs.length === 0 ? 0 : props.turbine.hubs[0].damage_and_wear ? props.turbine.hubs[0].damage_and_wear?.id : 0
+});
+
 watch(() => existingBladeForm.blade, (newBlade, oldBlade) => {
     existingBladeForm.damageAndWear = props.unusedBlades.filter(blade => blade.id === newBlade)[0].damage_and_wear_id;
+});
+
+watch(() => existingRotorForm.rotor, (newRotor, oldRotor) => {
+    existingRotorForm.damageAndWear = props.unusedRotors.filter(rotor => rotor.id === newRotor)[0].damage_and_wear_id;
+});
+
+watch(() => existingHubForm.hub, (newHub, oldHub) => {
+    existingHubForm.damageAndWear = props.unusedHubs.filter(hub => hub.id === newHub)[0].damage_and_wear_id;
 });
 
 const showBladeModal = ref(false);
 const showAddNewBladeContent = ref(false);
 const showRotorModal = ref(false);
 const showAddNewRotorContent = ref(false);
+const showHubModal = ref(false);
+const showAddNewHubContent = ref(false);
 
 const closeBladeModal = () => {
     showBladeModal.value = false
@@ -67,6 +93,11 @@ const closeRotorModal = () => {
     showAddNewRotorContent.value = false
 };
 
+const closeHubModal = () => {
+    showHubModal.value = false
+    showAddNewHubContent.value = false
+};
+
 const submitExistingBladeForm = () => {
     existingBladeForm.put(
         route('blades.update', { blade: existingBladeForm.blade }),
@@ -74,6 +105,7 @@ const submitExistingBladeForm = () => {
             onSuccess: () => {
                 closeBladeModal();
                 closeRotorModal();
+                closeHubModal();
             },
             preserveState: true
         }
@@ -87,6 +119,7 @@ const submitNewBladeForm = () => {
             onSuccess: () => {
                 closeBladeModal();
                 closeRotorModal();
+                closeHubModal();
             },
             preserveState: true
         }
@@ -100,6 +133,7 @@ const submitExistingRotorForm = () => {
             onSuccess: () => {
                 closeBladeModal();
                 closeRotorModal();
+                closeHubModal();
             },
             preserveState: true
         }
@@ -113,6 +147,35 @@ const submitNewRotorForm = () => {
             onSuccess: () => {
                 closeBladeModal();
                 closeRotorModal();
+                closeHubModal();
+            },
+            preserveState: true
+        }
+    );
+};
+
+const submitExistingHubForm = () => {
+    existingHubForm.put(
+        route('hubs.update', { hub: existingHubForm.hub }),
+        {
+            onSuccess: () => {
+                closeBladeModal();
+                closeRotorModal();
+                closeHubModal();
+            },
+            preserveState: true
+        }
+    );
+};
+
+const submitNewHubForm = () => {
+    newHubForm.post(
+        route('hubs.store'),
+        {
+            onSuccess: () => {
+                closeBladeModal();
+                closeRotorModal();
+                closeHubModal();
             },
             preserveState: true
         }
@@ -199,6 +262,44 @@ const submitNewRotorForm = () => {
             </div>
         </modal>
 
+        <modal v-if="showHubModal" @close="closeHubModal()">
+            <heading class="mb-2" :title="'Hub for: ' + props.turbine.name" />
+            <div v-if="showAddNewHubContent">
+                <form @submit.prevent="submitNewHubForm">
+                    <div class="grid grid-cols-2 gap-2">
+                        <p>Name:</p>
+                        <input type="text" v-model="newHubForm.name" class="border border-solid rounded px-2" placeholder="Enter hub name">
+                        <p>Damage and wear:</p>
+                        <select v-model="newHubForm.damageAndWear" id="damageAndWear" class="border border-solid rounded px-2">
+                            <option v-for="rating in props.damageAndWearOptions" :value="rating.id">{{ rating.level }}</option>
+                        </select>
+                    </div>                    
+                    <primaryButton @click="submitNewHubForm" text="Add hub" type="submit" class="mx-auto mt-4" />
+                </form>
+                <p class="mt-12 text-center"><span @click="showAddNewHubContent = false" class="cursor-pointer text-indigo-600">Click Here</span> to use existing hub</p>
+            </div>
+            <div v-else>
+                <div v-if="props.unusedHubs.length !== 0">
+                    <form @submit.prevent="submitExistingHubForm">
+                        <div class="grid grid-cols-2 gap-2">
+                            <p>Select hub:</p>
+                            <select v-model="existingHubForm.hub" id="hub" class="border border-solid rounded px-2">
+                                <option disabled :value="0">Select a hub</option>
+                                <option v-for="hub in props.unusedHubs" :value="hub.id">{{ hub.name }}</option>
+                            </select>
+                            <p>Damage and wear:</p>
+                            <select v-model="existingHubForm.damageAndWear" id="damageAndWear" class="border border-solid rounded px-2">
+                                <option disabled :value="0">Select rating</option>
+                                <option v-for="rating in props.damageAndWearOptions" :value="rating.id">{{ rating.level }}</option>
+                            </select>
+                        </div>                    
+                        <primaryButton v-if="existingHubForm.hub !== 0" @click="submitExistingHubForm" text="Update hub" type="submit" class="mx-auto mt-4" />
+                    </form>
+                </div>
+                <p class="mt-12">If you can't find the hub you are looking for <span @click="showAddNewHubContent = true" class="cursor-pointer text-indigo-600">Click Here</span> to add a new hub</p>
+            </div>
+        </modal>
+
         <heading :title="props.turbine.name" />
         <div class="flex justify-between m-auto w-fit mt-2">
             <location class="h-5 w-5 mr-2" /><span>{{ props.turbine.wind_farm.name + ' - ' + props.turbine.wind_farm.location }}</span>
@@ -226,10 +327,15 @@ const submitNewRotorForm = () => {
                 </div>
             </div>
 
-            <div class="border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none">
+            <div @click="showHubModal = true" class="border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none">
                 <h3 class="text-center font-bold">Hub</h3>
-                <p>Name: N/A</p>
-                <p>Damage and wear: N/A</p>
+                <div v-if="props.turbine.hubs.length === 0" class="text-red-600 font-bold">
+                    <p>No Hub</p>
+                </div>
+                <div v-else>
+                    <p>Name: {{ props.turbine.hubs[0].name }}</p>
+                    <p>Damage and wear: {{ props.turbine.hubs[0].damage_and_wear?.level }}</p>
+                </div>
             </div>
 
             <div class="border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none">

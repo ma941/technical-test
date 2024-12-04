@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BladeController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HubController;
 use App\Http\Controllers\RotorController;
 use App\Http\Controllers\TurbineController;
 use App\Http\Controllers\WindFarmController;
@@ -23,3 +24,4 @@ Route::resource('windfarms', WindFarmController::class)->names('windfarms');
 Route::resource('turbines', TurbineController::class)->names('turbines');
 Route::resource('blades', BladeController::class)->names('blades');
 Route::resource('rotors', RotorController::class)->names('rotors');
+Route::resource('hubs', HubController::class)->names('hubs');
