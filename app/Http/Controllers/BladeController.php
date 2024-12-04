@@ -17,17 +17,9 @@ class BladeController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Inertia::render('Blade/Index', [
+            'blades' => Blade::with('damageAndWear', 'turbine.windFarm')->get(),
+        ]);
     }
 
     /**
@@ -61,18 +53,9 @@ class BladeController extends Controller
      */
     public function show(Blade $blade)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Blade  $blade
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Blade $blade)
-    {
-        //
+        return Inertia::render('Blade/Show', [
+            'blade' => $blade->load('damageAndWear', 'turbine.windFarm'),
+        ]);
     }
 
     /**
@@ -109,6 +92,7 @@ class BladeController extends Controller
      */
     public function destroy(Blade $blade)
     {
-        //
+        $blade->delete();
+        return Inertia::location(route('blades.index'));
     }
 }
