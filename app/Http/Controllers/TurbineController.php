@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTurbineRequest;
 use App\Http\Requests\UpdateTurbineRequest;
+use App\Models\Blade;
+use App\Models\DamageAndWear;
 use App\Models\Turbine;
+use Inertia\Inertia;
 
 class TurbineController extends Controller
 {
@@ -15,7 +18,9 @@ class TurbineController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('Turbine/Index', [
+            'turbines' => Turbine::all(),
+        ]);
     }
 
     /**
@@ -47,7 +52,15 @@ class TurbineController extends Controller
      */
     public function show(Turbine $turbine)
     {
-        dd($turbine);
+        $availableBlades = Blade::whereNull('turbine_id')
+                                ->orWhere('turbine_id', $turbine->id)
+                                ->get();
+
+        return Inertia::render('Turbine/Show', [
+            'turbine' => $turbine->load('windFarm', 'blades.damageAndWear'),
+            'unusedBlades' => $availableBlades,
+            'damageAndWearOptions' => DamageAndWear::all()
+        ]);
     }
 
     /**

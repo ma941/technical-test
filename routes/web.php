@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BladeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TurbineController;
 use App\Http\Controllers\WindFarmController;
@@ -19,3 +20,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', DashboardController::class)->name('dashboard');
 Route::resource('windfarms', WindFarmController::class)->names('windfarms');
 Route::resource('turbines', TurbineController::class)->names('turbines');
+Route::resource('blades', BladeController::class)->names('blades');
