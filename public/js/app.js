@@ -22883,6 +22883,34 @@ __webpack_require__.r(__webpack_exports__);
       showGeneratorModal.value = false;
       showAddNewGeneratorContent.value = false;
     };
+    var openBladeModal = function openBladeModal() {
+      closeBladeModal();
+      closeRotorModal();
+      closeHubModal();
+      closeGeneratorModal();
+      showBladeModal.value = true;
+    };
+    var openRotorModal = function openRotorModal() {
+      closeBladeModal();
+      closeRotorModal();
+      closeHubModal();
+      closeGeneratorModal();
+      showRotorModal.value = true;
+    };
+    var openHubModal = function openHubModal() {
+      closeBladeModal();
+      closeRotorModal();
+      closeHubModal();
+      closeGeneratorModal();
+      showHubModal.value = true;
+    };
+    var openGeneratorModal = function openGeneratorModal() {
+      closeBladeModal();
+      closeRotorModal();
+      closeHubModal();
+      closeGeneratorModal();
+      showGeneratorModal.value = true;
+    };
     var submitExistingBladeForm = function submitExistingBladeForm() {
       existingBladeForm.put(route('blades.update', {
         blade: existingBladeForm.blade
@@ -23001,6 +23029,10 @@ __webpack_require__.r(__webpack_exports__);
       closeRotorModal: closeRotorModal,
       closeHubModal: closeHubModal,
       closeGeneratorModal: closeGeneratorModal,
+      openBladeModal: openBladeModal,
+      openRotorModal: openRotorModal,
+      openHubModal: openHubModal,
+      openGeneratorModal: openGeneratorModal,
       submitExistingBladeForm: submitExistingBladeForm,
       submitNewBladeForm: submitNewBladeForm,
       submitExistingRotorForm: submitExistingRotorForm,
@@ -24349,28 +24381,28 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "text-center mb-4 text-red-600"
       }, "Click a component to update", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_42, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
         onClick: _cache[28] || (_cache[28] = function ($event) {
-          return $setup.showBladeModal = true;
+          return $setup.openBladeModal();
         }),
         "class": "border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none"
       }, [_cache[69] || (_cache[69] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
         "class": "text-center font-bold"
       }, "Blade", -1 /* HOISTED */)), $setup.props.turbine.blades.length === 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_43, _cache[68] || (_cache[68] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "No blade", -1 /* HOISTED */)]))) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_44, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Name: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.props.turbine.blades[0].name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Damage and wear: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$setup$props$turbine = $setup.props.turbine.blades[0].damage_and_wear) === null || _$setup$props$turbine === void 0 ? void 0 : _$setup$props$turbine.level), 1 /* TEXT */)]))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
         onClick: _cache[29] || (_cache[29] = function ($event) {
-          return $setup.showRotorModal = true;
+          return $setup.openRotorModal();
         }),
         "class": "border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none"
       }, [_cache[71] || (_cache[71] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
         "class": "text-center font-bold"
       }, "Rotor", -1 /* HOISTED */)), $setup.props.turbine.rotors.length === 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_45, _cache[70] || (_cache[70] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "No Rotor", -1 /* HOISTED */)]))) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_46, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Name: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.props.turbine.rotors[0].name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Damage and wear: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$setup$props$turbine2 = $setup.props.turbine.rotors[0].damage_and_wear) === null || _$setup$props$turbine2 === void 0 ? void 0 : _$setup$props$turbine2.level), 1 /* TEXT */)]))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
         onClick: _cache[30] || (_cache[30] = function ($event) {
-          return $setup.showHubModal = true;
+          return $setup.openHubModal();
         }),
         "class": "border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none"
       }, [_cache[73] || (_cache[73] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
         "class": "text-center font-bold"
       }, "Hub", -1 /* HOISTED */)), $setup.props.turbine.hubs.length === 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_47, _cache[72] || (_cache[72] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "No Hub", -1 /* HOISTED */)]))) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_48, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Name: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.props.turbine.hubs[0].name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Damage and wear: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$setup$props$turbine3 = $setup.props.turbine.hubs[0].damage_and_wear) === null || _$setup$props$turbine3 === void 0 ? void 0 : _$setup$props$turbine3.level), 1 /* TEXT */)]))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
         onClick: _cache[31] || (_cache[31] = function ($event) {
-          return $setup.showGeneratorModal = true;
+          return $setup.openGeneratorModal();
         }),
         "class": "border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none"
       }, [_cache[75] || (_cache[75] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {

@@ -125,6 +125,38 @@ const closeGeneratorModal = () => {
     showAddNewGeneratorContent.value = false
 };
 
+const openBladeModal = () => {
+    closeBladeModal();
+    closeRotorModal();
+    closeHubModal();
+    closeGeneratorModal();
+    showBladeModal.value = true
+};
+
+const openRotorModal = () => {
+    closeBladeModal();
+    closeRotorModal();
+    closeHubModal();
+    closeGeneratorModal();
+    showRotorModal.value = true
+};
+
+const openHubModal = () => {
+    closeBladeModal();
+    closeRotorModal();
+    closeHubModal();
+    closeGeneratorModal();
+    showHubModal.value = true
+};
+
+const openGeneratorModal = () => {
+    closeBladeModal();
+    closeRotorModal();
+    closeHubModal();
+    closeGeneratorModal();
+    showGeneratorModal.value = true
+};
+
 const submitExistingBladeForm = () => {
     existingBladeForm.put(
         route('blades.update', { blade: existingBladeForm.blade }),
@@ -403,7 +435,7 @@ const submitNewGeneratorForm = () => {
         <heading title="Components" class="mt-8" />
         <p class="text-center mb-4 text-red-600">Click a component to update</p>
         <div class="grid grid-cols-2 gap-2 mt-4 text-center">
-            <div @click="showBladeModal = true" class="border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none">
+            <div @click="openBladeModal()" class="border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none">
                 <h3 class="text-center font-bold">Blade</h3>
                 <div v-if="props.turbine.blades.length === 0" class="text-red-600 font-bold">
                     <p>No blade</p>
@@ -413,7 +445,7 @@ const submitNewGeneratorForm = () => {
                     <p>Damage and wear: {{ props.turbine.blades[0].damage_and_wear?.level }}</p>
                 </div>
             </div>
-            <div @click="showRotorModal = true" class="border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none">
+            <div @click="openRotorModal()" class="border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none">
                 <h3 class="text-center font-bold">Rotor</h3>
                 <div v-if="props.turbine.rotors.length === 0" class="text-red-600 font-bold">
                     <p>No Rotor</p>
@@ -423,7 +455,7 @@ const submitNewGeneratorForm = () => {
                     <p>Damage and wear: {{ props.turbine.rotors[0].damage_and_wear?.level }}</p>
                 </div>
             </div>
-            <div @click="showHubModal = true" class="border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none">
+            <div @click="openHubModal()" class="border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none">
                 <h3 class="text-center font-bold">Hub</h3>
                 <div v-if="props.turbine.hubs.length === 0" class="text-red-600 font-bold">
                     <p>No Hub</p>
@@ -433,7 +465,7 @@ const submitNewGeneratorForm = () => {
                     <p>Damage and wear: {{ props.turbine.hubs[0].damage_and_wear?.level }}</p>
                 </div>
             </div>
-            <div @click="showGeneratorModal = true" class="border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none">
+            <div @click="openGeneratorModal()" class="border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none">
                 <h3 class="text-center font-bold">Generator</h3>
                 <div v-if="props.turbine.generators.length === 0" class="text-red-600 font-bold">
                     <p>No Generator</p>
