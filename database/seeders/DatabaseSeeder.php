@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(BladeSeeder::class);
         $this->call(RotorSeeder::class);
         $this->call(HubSeeder::class);
+        $this->call(GeneratorSeeder::class);
     }
 }

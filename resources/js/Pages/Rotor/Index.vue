@@ -20,8 +20,8 @@ const navigateToRotors = (id) => {
         <div class="grid grid-cols-3 gap-2 mt-2">
             <div @click="navigateToRotors(rotor.id)" v-for="rotor in props.rotors" class="border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none">
                 <p>Name: {{ rotor.name }}</p>
-                <p>Turbine: <span :class="rotor.turbine ? 'text-black' : 'text-red-600'">{{ rotor.turbine ? rotor.turbine.name : 'N/A' }}</span></p>
-                <p>Location: <span :class="rotor.turbine ? 'text-black' : 'text-red-600'">{{ rotor.turbine ? rotor.turbine.wind_farm.location : 'N/A' }}</span></p>
+                <p>Turbine: <span :class="rotor.turbine ? '' : 'text-red-600'">{{ rotor.turbine ? rotor.turbine.name : 'N/A' }}</span></p>
+                <p>Location: <span :class="rotor.turbine ? '' : 'text-red-600'">{{ rotor.turbine ? rotor.turbine.wind_farm.location : 'N/A' }}</span></p>
                 <p>Damage and wear: {{ rotor.damage_and_wear?.level }}</p>
             </div>
         </div>

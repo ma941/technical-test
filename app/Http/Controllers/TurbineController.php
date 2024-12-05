@@ -6,6 +6,7 @@ use App\Http\Requests\StoreTurbineRequest;
 use App\Http\Requests\UpdateTurbineRequest;
 use App\Models\Blade;
 use App\Models\DamageAndWear;
+use App\Models\Generator;
 use App\Models\Hub;
 use App\Models\Rotor;
 use App\Models\Turbine;
@@ -66,11 +67,16 @@ class TurbineController extends Controller
                                 ->orWhere('turbine_id', $turbine->id)
                                 ->get();
 
+        $availableGenerators = Generator::whereNull('turbine_id')
+                                ->orWhere('turbine_id', $turbine->id)
+                                ->get();
+
         return Inertia::render('Turbine/Show', [
-            'turbine' => $turbine->load('windFarm', 'blades.damageAndWear', 'rotors.damageAndWear', 'hubs.damageAndWear'),
+            'turbine' => $turbine->load('windFarm', 'blades.damageAndWear', 'rotors.damageAndWear', 'hubs.damageAndWear', 'generators.damageAndWear'),
             'unusedBlades' => $availableBlades,
             'unusedRotors' => $availableRotors,
             'unusedHubs' => $availableHubs,
+            'unusedGenerators' => $availableGenerators,
             'damageAndWearOptions' => DamageAndWear::all()
         ]);
     }

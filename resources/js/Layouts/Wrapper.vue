@@ -8,7 +8,7 @@
             <Link :href="route('blades.index')">All Blades</Link>
             <Link :href="route('rotors.index')">All Rotors</Link>
             <Link :href="route('hubs.index')">All Hubs</Link>
-            <Link :href="route('blades.index')">All Generators</Link>
+            <Link :href="route('generators.index')">All Generators</Link>
         </div>
     </div>
     <div class="p-4">

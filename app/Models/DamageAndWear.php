@@ -24,4 +24,9 @@ class DamageAndWear extends Model
     {
         return $this->hasMany(Hub::class);
     }
+
+    public function generators(): HasMany
+    {
+        return $this->hasMany(Generator::class);
+    }
 }

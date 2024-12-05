@@ -22,6 +22,10 @@ const props = defineProps({
         type: Object,
         required: true 
     },
+    unusedGenerators: {
+        type: Object,
+        required: true 
+    },
     damageAndWearOptions: {
         type: Object,
         required: true 
@@ -64,6 +68,18 @@ const existingHubForm = useForm({
     damageAndWear: props.turbine.hubs.length === 0 ? 0 : props.turbine.hubs[0].damage_and_wear ? props.turbine.hubs[0].damage_and_wear?.id : 0
 });
 
+const newGeneratorForm = useForm({
+    turbine: props.turbine.id,
+    name: '',
+    damageAndWear: 1
+});
+
+const existingGeneratorForm = useForm({
+    turbine: props.turbine.id,
+    generator: props.turbine.generators.length === 0 ? 0 : props.turbine.generators[0].id,
+    damageAndWear: props.turbine.generators.length === 0 ? 0 : props.turbine.generators[0].damage_and_wear ? props.turbine.generators[0].damage_and_wear?.id : 0
+});
+
 watch(() => existingBladeForm.blade, (newBlade, oldBlade) => {
     existingBladeForm.damageAndWear = props.unusedBlades.filter(blade => blade.id === newBlade)[0].damage_and_wear_id;
 });
@@ -76,12 +92,18 @@ watch(() => existingHubForm.hub, (newHub, oldHub) => {
     existingHubForm.damageAndWear = props.unusedHubs.filter(hub => hub.id === newHub)[0].damage_and_wear_id;
 });
 
+watch(() => existingGeneratorForm.generator, (newGenerator, oldGenerator) => {
+    existingGeneratorForm.damageAndWear = props.unusedGenerators.filter(generator => generator.id === newGenerator)[0].damage_and_wear_id;
+});
+
 const showBladeModal = ref(false);
 const showAddNewBladeContent = ref(false);
 const showRotorModal = ref(false);
 const showAddNewRotorContent = ref(false);
 const showHubModal = ref(false);
 const showAddNewHubContent = ref(false);
+const showGeneratorModal = ref(false);
+const showAddNewGeneratorContent = ref(false);
 
 const closeBladeModal = () => {
     showBladeModal.value = false
@@ -98,6 +120,11 @@ const closeHubModal = () => {
     showAddNewHubContent.value = false
 };
 
+const closeGeneratorModal = () => {
+    showGeneratorModal.value = false
+    showAddNewGeneratorContent.value = false
+};
+
 const submitExistingBladeForm = () => {
     existingBladeForm.put(
         route('blades.update', { blade: existingBladeForm.blade }),
@@ -106,6 +133,7 @@ const submitExistingBladeForm = () => {
                 closeBladeModal();
                 closeRotorModal();
                 closeHubModal();
+                closeGeneratorModal();
             },
             preserveState: true
         }
@@ -120,6 +148,7 @@ const submitNewBladeForm = () => {
                 closeBladeModal();
                 closeRotorModal();
                 closeHubModal();
+                closeGeneratorModal();
             },
             preserveState: true
         }
@@ -134,6 +163,7 @@ const submitExistingRotorForm = () => {
                 closeBladeModal();
                 closeRotorModal();
                 closeHubModal();
+                closeGeneratorModal();
             },
             preserveState: true
         }
@@ -148,6 +178,7 @@ const submitNewRotorForm = () => {
                 closeBladeModal();
                 closeRotorModal();
                 closeHubModal();
+                closeGeneratorModal();
             },
             preserveState: true
         }
@@ -162,6 +193,7 @@ const submitExistingHubForm = () => {
                 closeBladeModal();
                 closeRotorModal();
                 closeHubModal();
+                closeGeneratorModal();
             },
             preserveState: true
         }
@@ -176,12 +208,42 @@ const submitNewHubForm = () => {
                 closeBladeModal();
                 closeRotorModal();
                 closeHubModal();
+                closeGeneratorModal();
             },
             preserveState: true
         }
     );
 };
 
+const submitExistingGeneratorForm = () => {
+    existingGeneratorForm.put(
+        route('generators.update', { generator: existingGeneratorForm.generator }),
+        {
+            onSuccess: () => {
+                closeBladeModal();
+                closeRotorModal();
+                closeHubModal();
+                closeGeneratorModal();
+            },
+            preserveState: true
+        }
+    );
+};
+
+const submitNewGeneratorForm = () => {
+    newGeneratorForm.post(
+        route('generators.store'),
+        {
+            onSuccess: () => {
+                closeBladeModal();
+                closeRotorModal();
+                closeHubModal();
+                closeGeneratorModal();
+            },
+            preserveState: true
+        }
+    );
+};
 </script>
 
 <template>
@@ -223,7 +285,6 @@ const submitNewHubForm = () => {
                 <p class="mt-12">If you can't find the blade you are looking for <span @click="showAddNewBladeContent = true" class="cursor-pointer text-indigo-600">Click Here</span> to add a new blade</p>
             </div>
         </modal>
-
         <modal v-if="showRotorModal" @close="closeRotorModal()">
             <heading class="mb-2" :title="'Rotor for: ' + props.turbine.name" />
             <div v-if="showAddNewRotorContent">
@@ -261,7 +322,6 @@ const submitNewHubForm = () => {
                 <p class="mt-12">If you can't find the rotor you are looking for <span @click="showAddNewRotorContent = true" class="cursor-pointer text-indigo-600">Click Here</span> to add a new rotor</p>
             </div>
         </modal>
-
         <modal v-if="showHubModal" @close="closeHubModal()">
             <heading class="mb-2" :title="'Hub for: ' + props.turbine.name" />
             <div v-if="showAddNewHubContent">
@@ -299,7 +359,43 @@ const submitNewHubForm = () => {
                 <p class="mt-12">If you can't find the hub you are looking for <span @click="showAddNewHubContent = true" class="cursor-pointer text-indigo-600">Click Here</span> to add a new hub</p>
             </div>
         </modal>
-
+        <modal v-if="showGeneratorModal" @close="closeGeneratorModal()">
+            <heading class="mb-2" :title="'Generator for: ' + props.turbine.name" />
+            <div v-if="showAddNewGeneratorContent">
+                <form @submit.prevent="submitNewGeneratorForm">
+                    <div class="grid grid-cols-2 gap-2">
+                        <p>Name:</p>
+                        <input type="text" v-model="newGeneratorForm.name" class="border border-solid rounded px-2" placeholder="Enter generator name">
+                        <p>Damage and wear:</p>
+                        <select v-model="newGeneratorForm.damageAndWear" id="damageAndWear" class="border border-solid rounded px-2">
+                            <option v-for="rating in props.damageAndWearOptions" :value="rating.id">{{ rating.level }}</option>
+                        </select>
+                    </div>                    
+                    <primaryButton @click="submitNewGeneratorForm" text="Add generator" type="submit" class="mx-auto mt-4" />
+                </form>
+                <p class="mt-12 text-center"><span @click="showAddNewGeneratorContent = false" class="cursor-pointer text-indigo-600">Click Here</span> to use existing generator</p>
+            </div>
+            <div v-else>
+                <div v-if="props.unusedGenerators.length !== 0">
+                    <form @submit.prevent="submitExistingGeneratorForm">
+                        <div class="grid grid-cols-2 gap-2">
+                            <p>Select generator:</p>
+                            <select v-model="existingGeneratorForm.generator" id="generator" class="border border-solid rounded px-2">
+                                <option disabled :value="0">Select a generator</option>
+                                <option v-for="generator in props.unusedGenerators" :value="generator.id">{{ generator.name }}</option>
+                            </select>
+                            <p>Damage and wear:</p>
+                            <select v-model="existingGeneratorForm.damageAndWear" id="damageAndWear" class="border border-solid rounded px-2">
+                                <option disabled :value="0">Select rating</option>
+                                <option v-for="rating in props.damageAndWearOptions" :value="rating.id">{{ rating.level }}</option>
+                            </select>
+                        </div>                    
+                        <primaryButton v-if="existingGeneratorForm.generator !== 0" @click="submitExistingGeneratorForm" text="Update generator" type="submit" class="mx-auto mt-4" />
+                    </form>
+                </div>
+                <p class="mt-12">If you can't find the generator you are looking for <span @click="showAddNewGeneratorContent = true" class="cursor-pointer text-indigo-600">Click Here</span> to add a new generator</p>
+            </div>
+        </modal>
         <heading :title="props.turbine.name" />
         <div class="flex justify-between m-auto w-fit mt-2">
             <location class="h-5 w-5 mr-2" /><span>{{ props.turbine.wind_farm.name + ' - ' + props.turbine.wind_farm.location }}</span>
@@ -315,7 +411,6 @@ const submitNewHubForm = () => {
                     <p>Damage and wear: {{ props.turbine.blades[0].damage_and_wear?.level }}</p>
                 </div>
             </div>
-
             <div @click="showRotorModal = true" class="border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none">
                 <h3 class="text-center font-bold">Rotor</h3>
                 <div v-if="props.turbine.rotors.length === 0" class="text-red-600 font-bold">
@@ -326,7 +421,6 @@ const submitNewHubForm = () => {
                     <p>Damage and wear: {{ props.turbine.rotors[0].damage_and_wear?.level }}</p>
                 </div>
             </div>
-
             <div @click="showHubModal = true" class="border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none">
                 <h3 class="text-center font-bold">Hub</h3>
                 <div v-if="props.turbine.hubs.length === 0" class="text-red-600 font-bold">
@@ -337,11 +431,15 @@ const submitNewHubForm = () => {
                     <p>Damage and wear: {{ props.turbine.hubs[0].damage_and_wear?.level }}</p>
                 </div>
             </div>
-
-            <div class="border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none">
+            <div @click="showGeneratorModal = true" class="border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none">
                 <h3 class="text-center font-bold">Generator</h3>
-                <p>Name: N/A</p>
-                <p>Damage and wear: N/A</p>
+                <div v-if="props.turbine.generators.length === 0" class="text-red-600 font-bold">
+                    <p>No Generator</p>
+                </div>
+                <div v-else>
+                    <p>Name: {{ props.turbine.generators[0].name }}</p>
+                    <p>Damage and wear: {{ props.turbine.generators[0].damage_and_wear?.level }}</p>
+                </div>
             </div>            
         </div>
     </wrapper>
