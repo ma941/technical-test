@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\WindFarm;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
