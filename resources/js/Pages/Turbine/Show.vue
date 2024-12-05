@@ -400,6 +400,8 @@ const submitNewGeneratorForm = () => {
         <div class="flex justify-between m-auto w-fit mt-2">
             <location class="h-5 w-5 mr-2" /><span>{{ props.turbine.wind_farm.name + ' - ' + props.turbine.wind_farm.location }}</span>
         </div>
+        <heading title="Components" class="mt-8" />
+        <p class="text-center mb-4 text-red-600">Click a component to update</p>
         <div class="grid grid-cols-2 gap-2 mt-4 text-center">
             <div @click="showBladeModal = true" class="border border-slate-500 py-4 px-12 rounded-md shadow cursor-pointer hover:bg-slate-500 hover:text-white hover:shadow-none">
                 <h3 class="text-center font-bold">Blade</h3>
