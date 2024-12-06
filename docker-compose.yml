@@ -1,13 +1,12 @@
-# For more information: https://laravel.com/docs/sail
-version: '3'
 services:
     laravel.test:
         build:
-            context: ./vendor/laravel/sail/runtimes/8.1
+            context: ./vendor/laravel/sail/runtimes/8.2
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
-        image: sail-8.1/app
+        image: sail-8.2/app
+        platform: linux/amd64
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         ports:
@@ -59,6 +58,7 @@ services:
             timeout: 5s
     meilisearch:
         image: 'getmeili/meilisearch:latest'
+        platform: linux/amd64
         ports:
             - '${FORWARD_MEILISEARCH_PORT:-7700}:7700'
         volumes:
@@ -78,6 +78,7 @@ services:
             - sail
     selenium:
         image: 'selenium/standalone-chrome'
+        platform: linux/amd64
         volumes:
             - '/dev/shm:/dev/shm'
         networks:
