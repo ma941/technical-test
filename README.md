@@ -64,4 +64,17 @@ composer install --ignore-platform-reqs
 ```
 
 ## Your Notes
-This is a place for you to add your notes, plans, thinking and any feedback you have for us of the task, please feel free to include whatever you like here, we'll make sure to read it. 
+I have completed the task as outlined, and I’d like to share a few key points about my approach and implementation.
+
+Regarding the bonus points, I noticed the mention of React JS. While I am more experienced with Vue.js, I am eager to expand my React JS knowledge. For this task, I chose Vue.js over blade files for the frontend, as it shares many similarities with React, including its JavaScript foundation and component-based architecture.
+
+To accommodate this choice, a few additional steps are required during setup. After completing the basic setup (configuring your .env file and installing PHP dependencies using “composer install”), please run the following commands to build the frontend assets:
+
+npm install  
+npm run dev  
+
+I have merged my work into the main branch via a pull request. However, you can review all my commit history by viewing the closed pull request.
+
+Additionally, ensure you run the migrations with seeders. While the main CRUD functionality focuses on turbine components, the seeder will pre-populate your database with wind farms and their turbines. This allows you to manage turbine components effectively (create, read, update, and delete operations).
+
+If you have any questions or need clarification about the implementation, feel free to reach out via email. I am more than happy to discuss any aspect of the task or address any concerns.
