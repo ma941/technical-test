@@ -64,6 +64,11 @@ composer install --ignore-platform-reqs
 ```
 
 ## Your Notes
+Tech stack:
+Laravel
+Vue.js
+TailwindCSS
+
 I have completed the task as outlined, and I’d like to share a few key points about my approach and implementation.
 
 Regarding the bonus points, I noticed the mention of React JS. While I am more experienced with Vue.js, I am eager to expand my React JS knowledge. For this task, I chose Vue.js over blade files for the frontend, as it shares many similarities with React, including its JavaScript foundation and component-based architecture.
